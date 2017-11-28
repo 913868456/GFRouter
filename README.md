@@ -4,10 +4,10 @@
 
 /**
  
- URL匹配规则:  scheme://host/path?query
+ URL匹配规则:  scheme:///控制器名称?属性名=属性值&属性名=属性值
  
  Example:
- GFRouterDemo://host/ThirdVC
+ GFRouterDemo:///ThirdVC
  
  ------------------------------------------------------------
  

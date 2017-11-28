@@ -31,8 +31,7 @@
  ------------------------------------------------------------
  
  */
-
-+ (void)openURL:(NSURL *)URL;
++ (BOOL)openURL:(NSURL *)URL;
 
 /**
  
@@ -42,7 +41,7 @@
  @para paraDic    控制器属性字典 属性为空则传nil
  
  */
-+ (void)openClassName:(NSString *)className parameters:(NSMutableDictionary *)paraDic;
++ (BOOL)openClass:(NSString *)className parameters:(NSMutableDictionary *)paraDic;
 
 /**
  传入控制器名称,获取控制器实例

@@ -26,6 +26,7 @@
  - 添加GFRouter.h GFRouter.m 到工程中
  - 导入GFRouter.h 头文件
  - 在 APPDelegate中添加下面方法
+ 
    -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
     
     [GFRouter openURL:url];

@@ -5,7 +5,7 @@
 /**
  
  URL匹配规则:  scheme://host/控制器名称?属性名=属性值&属性名=属性值
- 
+ URL定义需符合RFC1808
  Example:
  GFRouterDemo://host/ThirdVC
  
@@ -22,15 +22,8 @@
  
  
  # 使用
-
- - 添加GFRouter.h,GFRouter.m 到工程中
- - 导入GFRouter.h 头文件
- - 在 APPDelegate中添加下面方法
- 
-   -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
-    
-    [GFRouter openURL:url];
-      return YES;
-   }
- - 完成调用.可以使用浏览器输入URL测试一下了.
+ - 将GFRouter导入项目工程中,在AppDelegate加入GFRouter.h头文件
+ - 在 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options方法中调用 [GFRouter openURL:url] 方法
+   ios 9.0 之前是在 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation方法中调用[GFROuter openURL:url] 方法
+ - 浏览器中输入定义好的URL,然后会跳转到指定界面
 

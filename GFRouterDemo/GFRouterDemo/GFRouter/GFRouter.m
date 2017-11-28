@@ -26,23 +26,17 @@
 }
 
 //URL跳转到对应控制器并传递相关参数
-+ (void)openURL:(NSURL *)URL{
++ (BOOL)openURL:(NSURL *)URL{
     
     //获取控制器
     UIViewController *controller = [GFRouter getControllerFromURL:URL];
-    
-    if (controller == nil) {
-        return;
-    }
+    if (!controller) return NO;
     
     //获取控制器属性参数
     NSMutableDictionary *paraDic  = [GFRouter getParaWith:URL];
-
+    
     //给控制器参数赋值
-    if (paraDic.allValues.count) {//字典值判空处理
-        
-        [GFRouter setPropertyWith:paraDic and:controller];
-    }
+    [GFRouter setPropertyWith:paraDic and:controller];
     
     //推出控制器
     
@@ -53,22 +47,18 @@
         
         [GFRouter pushWith:controller];
     }
+    
+    return YES;
 }
 
 //类名跳转到对应控制器并传递相关参数
-+ (void)openClassName:(NSString *)className parameters:(NSMutableDictionary *)paraDic{
++ (BOOL)openClass:(NSString *)className parameters:(NSMutableDictionary *)paraDic{
     
     UIViewController *controller = [GFRouter getControllerFromClassName:className];
-    
-    if (controller == nil) {
-        return;
-    }
+    if(!controller) return NO;
     
     //给控制器参数赋值
-    if (paraDic.allValues.count) {//字典值判空处理
-        
-        [GFRouter setPropertyWith:paraDic and:controller];
-    }
+    [GFRouter setPropertyWith:paraDic and:controller];
     
     //推出控制器
     
@@ -79,16 +69,22 @@
         
         [GFRouter pushWith:controller];
     }
+    
+    return YES;
 }
 
 //通过URL获取控制器
 + (UIViewController *)getControllerFromURL:(NSURL *)URL{
     
-    NSString *subPath = [URL.path substringFromIndex:1];
-    
-    UIViewController *vc = [GFRouter getControllerFromClassName:subPath];
-    
-    return vc;
+    if (URL.path.length > 1) {
+        
+        NSString *subPath = [URL.path substringFromIndex:1];
+        UIViewController *vc = [GFRouter getControllerFromClassName:subPath];
+        return vc;
+    }else{
+        
+        return nil;
+    }
 }
 
 //通过类名获取控制器
@@ -169,7 +165,7 @@
     NSArray<NSURLQueryItem *> *queryItems = [[NSURLComponents alloc] initWithURL:URL resolvingAgainstBaseURL:false].queryItems;
     
     for (NSURLQueryItem *item in queryItems) {
-       properties[item.name] = item.value;
+        properties[item.name] = item.value;
     }
     
     return properties;

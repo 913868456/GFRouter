@@ -4,7 +4,7 @@
 
 /**
  
- URL匹配规则:  scheme:///控制器名称?属性名=属性值&属性名=属性值
+ URL匹配规则:  scheme://host/控制器名称?属性名=属性值&属性名=属性值
  
  Example:
  GFRouterDemo:///ThirdVC

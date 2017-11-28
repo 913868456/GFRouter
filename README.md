@@ -38,5 +38,5 @@
     return  [GFRouter openURL:url];
  }
  ```
- - 浏览器中输入定义好的URL,然后会跳转到指定界面
+ - 浏览器中输入定义好的URL,通过scheme跳转到指定界面
 

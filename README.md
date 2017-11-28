@@ -16,7 +16,7 @@
  URL参数添加 displayStyle=present,目标控制器模态推出
  
  Example:
- GFRouterDemo://host/ThirdVC/displayStyle=present
+ GFRouterDemo://host/ThirdVC?displayStyle=present
  
  ------------------------------------------------------------
  

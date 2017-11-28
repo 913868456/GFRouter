@@ -23,7 +23,20 @@
  
  # 使用
  - 将GFRouter导入项目工程中,在AppDelegate加入GFRouter.h头文件
- - 在 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options方法中调用 [GFRouter openURL:url] 方法
-   ios 9.0 之前是在 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation方法中调用[GFROuter openURL:url] 方法
+ 
+ - 在AppDelegate中调用Router方法
+ 
+ ```
+ //iOS 9.0以后外部链接打开应用会调用该方法
+ - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+   
+    return  [GFRouter openURL:url];
+ }
+ 
+ //iOS 9.0之前外部链接打开应用会调用该方法
+ - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return  [GFRouter openURL:url];
+ }
+ ```
  - 浏览器中输入定义好的URL,然后会跳转到指定界面
 

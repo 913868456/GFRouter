@@ -35,18 +35,8 @@
     //获取控制器属性参数
     NSMutableDictionary *paraDic  = [GFRouter getParaWith:URL];
     
-    //给控制器参数赋值
-    [GFRouter setPropertyWith:paraDic and:controller];
-    
-    //推出控制器
-    
-    if ([paraDic[DISPLAY_STYLE] isEqualToString:PRESENT_STYLE]) {
-        
-        [GFRouter presentWith:controller];
-    }else{
-        
-        [GFRouter pushWith:controller];
-    }
+    //控制器显示
+    [GFRouter display:controller with:paraDic];
     
     return YES;
 }
@@ -57,20 +47,32 @@
     UIViewController *controller = [GFRouter getControllerFromClassName:className];
     if(!controller) return NO;
     
-    //给控制器参数赋值
-    [GFRouter setPropertyWith:paraDic and:controller];
-    
-    //推出控制器
-    
-    if ([paraDic[DISPLAY_STYLE] isEqualToString:PRESENT_STYLE]) {
-        
-        [GFRouter presentWith:controller];
-    }else{
-        
-        [GFRouter pushWith:controller];
-    }
+    //控制器显示
+    [GFRouter display:controller with:paraDic];
     
     return YES;
+}
+
++ (void)display:(UIViewController *)controller with:(NSMutableDictionary *)paraDic{
+    
+    UIViewController *currentVC = [GFRouter getCurrentVC];
+    //将当前控制器与URL中控制器比较,相同则直接给当前控制器赋值,不同则给url控制器赋值
+    if (currentVC.class == controller.class) {
+        //给当前控制器赋值
+        [GFRouter setPropertyWith:paraDic and:currentVC];
+    }else{
+        //给URL控制器参数赋值
+        [GFRouter setPropertyWith:paraDic and:controller];
+        
+        //推出控制器
+        if ([paraDic[DISPLAY_STYLE] isEqualToString:PRESENT_STYLE]) {
+            
+            [GFRouter presentWith:controller];
+        }else{
+            
+            [GFRouter pushWith:controller];
+        }
+    }
 }
 
 //通过URL获取控制器

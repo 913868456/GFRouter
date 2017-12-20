@@ -18,7 +18,7 @@
  ------------------------------------------------------------
  
  
- # Useage
+ # Usage
  - Import GFRouter to your Project, and include GFRouter.h in AppDelegate.
  
  - Call methods as follows:

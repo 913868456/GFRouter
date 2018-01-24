@@ -1,25 +1,21 @@
 # GFRouter
 
- Through URL map to spercify controller and push it.
-
- URL needs to match RFC1808
+ Through URL map to spercify controller and push (or present) it. 
  
- Example:
- GFRouterDemo://host/controllerName?prepertyName=value&propertyName=value
- 
- ------------------------------------------------------------
- 
- DisplayStyle: push and present
- Defalut displayStyle is push, and hideBottomBarWhenPushed = YES
- 
- Example:
- GFRouterDemo://host/ThirdVC?displayStyle=present
- 
- ------------------------------------------------------------
- 
+ > NOTE: URL needs to match RFC1808
  
  # Usage
  - Import GFRouter to your Project, and include GFRouter.h in AppDelegate.
+ - Joining together the URL like this 
+ ```
+ /**
+  para: displayStyle  Defalut is push, and ViewController's proproperty hideBottomBarWhenPushed is YES. if displayStyle equals to present,
+  current ViewController will present another viewcontrolller.
+ 
+  Example:
+  GFRouterDemo://host/controllerName?prepertyName=value&propertyName=valueC&displayStyle=present
+ */
+ ```
  
  - Call methods as follows:
  
